@@ -1,0 +1,3 @@
+protocol NewsListRouterProtocol {
+    func presentNewsInfoScene()
+}
