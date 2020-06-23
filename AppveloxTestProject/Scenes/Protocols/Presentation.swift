@@ -12,7 +12,6 @@ protocol Presentation {
 }
 
 extension Presentation {
-
     func present(_ router: Router, from parentRouter: Router, animated: Bool, completion: (() -> Void)?) {
         guard let controller = router.controller, let parentController = parentRouter.controller else { return }
 

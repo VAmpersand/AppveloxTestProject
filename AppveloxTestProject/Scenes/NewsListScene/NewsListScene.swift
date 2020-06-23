@@ -23,8 +23,7 @@ final class NewsListScene: BaseScene {
 
         super.init(viewController: controller,
                    router: router,
-                   parentRouter: dependencies.parentRouter,
-                   embeddationStyle: .navigation)
+                   parentRouter: dependencies.parentRouter)
     }
 }
 

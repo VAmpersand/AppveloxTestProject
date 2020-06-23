@@ -2,30 +2,21 @@ import UIKit
 
 public final class StaticNavigationBar: UIView {
     init(title: String,
-         leftButtonImage: UIImage? = nil,
-         leftAction: (() -> Void)? = nil,
          rightButtonImage: UIImage? = nil,
          rightAction: (() -> Void)? = nil) {
         super.init(frame: .zero)
 
         setupSelf()
         self.title = title
-        self.leftAction = leftAction
         self.rightAction = rightAction
-
-        if let leftButtonImage = leftButtonImage, let leftAction = leftAction {
-            addLeftButton(with: leftButtonImage, action: leftAction)
-        }
 
         if let rightButtonImage = rightButtonImage, let rightAction = rightAction {
             addRightButton(with: rightButtonImage, action: rightAction)
         }
     }
 
-    private var leftAction: (() -> Void)?
     private var rightAction: (() -> Void)?
 
-    var leftButton: UIButton?
     var rightButton: UIButton?
 
     public var textAligment: NSTextAlignment {
@@ -40,10 +31,6 @@ public final class StaticNavigationBar: UIView {
         didSet {
             titleLabel.textColor = titleColor
         }
-    }
-
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
 
     required init?(coder: NSCoder) {
@@ -61,6 +48,7 @@ public final class StaticNavigationBar: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.font = UIFont.boldSystemFont(ofSize: 20)
 
         return label
     }()
@@ -72,23 +60,11 @@ public extension StaticNavigationBar {
 
         constraintSubviews()
     }
-
-    func addLeftButton(with image: UIImage, action: (() -> Void)) {
-        let leftButton = UIButton(type: .system)
-        leftButton.setImage(image, for: .normal)
-        leftButton.addTarget(nil, action: #selector(handleLeftButton), for: .touchUpInside)
-
-        addSubview(leftButton)
-        leftButton.snp.makeConstraints { make in
-            make.left.equalTo(titleLabel)
-            make.bottom.equalTo(titleLabel.snp.top)
-        }
-        self.leftButton = leftButton
-    }
-
+    
     func addRightButton(with image: UIImage, action: (() -> Void)) {
         let rightButton = UIButton(type: .system)
         rightButton.setImage(image, for: .normal)
+        rightButton.tintColor = .black
         rightButton.addTarget(nil, action: #selector(handleRightButton), for: .touchUpInside)
 
         addSubview(rightButton)
@@ -96,10 +72,6 @@ public extension StaticNavigationBar {
             make.right.top.equalToSuperview().inset(20)
         }
         self.rightButton = rightButton
-    }
-
-    @objc func handleLeftButton() {
-        leftAction?()
     }
 
     @objc func handleRightButton() {

@@ -5,6 +5,7 @@ extension NewsListController {
         override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
             super.init(style: style, reuseIdentifier: reuseIdentifier)
             
+            setupSelf()
         }
         
         required init?(coder: NSCoder) {
@@ -13,17 +14,23 @@ extension NewsListController {
         
         public static let cellID = String(describing: NewsCell.self)
         
-        private lazy var nameLabel: UILabel = {
+        private lazy var title: UILabel = {
             let label = UILabel()
             label.textAlignment = .left
+            label.font = UIFont.italicSystemFont(ofSize: 19)
+            label.numberOfLines = 0
+            
+            label.text = "init(coder:) has not been implemented"
             
             return label
         }()
         
-        private lazy var positionLabel: UILabel = {
+        private lazy var dateLabel: UILabel = {
             let label = UILabel()
             label.textAlignment = .left
             label.font = UIFont.systemFont(ofSize: 12)
+            
+            label.text = "\(Date())"
             
             return label
         }()
@@ -34,18 +41,11 @@ extension NewsListController {
             stackView.spacing = 2
             stackView.axis = .vertical
             [
-                nameLabel,
-                positionLabel
-            ].forEach { stackView.addArrangedSubview($0) }
+                title,
+                dateLabel,
+            ].forEach(stackView.addArrangedSubview)
             
             return stackView
-        }()
-        
-        public lazy var adminRightsView: UIView = {
-            let button = UIView()
-            button.backgroundColor = .green
-            
-            return button
         }()
     }
 }
@@ -55,23 +55,17 @@ extension NewsListController.NewsCell {
         addSubviews()
         constraintSubviews()
         
-        backgroundColor = .green
+        selectionStyle = .none
     }
     
     func addSubviews() {
         addSubview(stackView)
-        addSubview(adminRightsView)
     }
     
     func constraintSubviews() {
         stackView.snp.makeConstraints { make in
-            make.left.top.bottom.equalToSuperview().inset(10)
-            make.right.equalTo(adminRightsView.snp.left).offset(-10)
-        }
-        
-        adminRightsView.snp.makeConstraints { make in
-            make.right.top.bottom.equalToSuperview().inset(10)
-            make.width.equalTo(adminRightsView.snp.height)
+            make.top.bottom.equalToSuperview().inset(10)
+            make.left.right.equalToSuperview().inset(20)
         }
     }
 }

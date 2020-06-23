@@ -18,11 +18,6 @@ class BaseScene: Scene {
         self.router = router
 
         router.parentRouter = parentRouter
-
-        switch embeddationStyle {
-        case .none:             router.controller = viewController
-        case .navigation:       router.controller = viewController?.embeddedInNavigationController()
-        case .hiddenNavigation: router.controller = viewController?.embeddedInHiddenNavigationController()
-        }
+        router.controller = viewController
     }
 }

@@ -18,7 +18,6 @@ public final class NewsListController: BaseController {
     }()
 }
 
-
 extension NewsListController {
     override func setupSelf() {
         super.setupSelf()
@@ -27,7 +26,8 @@ extension NewsListController {
     
     override func addSubviews() {
         super.addSubviews()
-        navigationBar = addStaticNavigationBar("Test").navigationBar
+        navigationBar = addStaticNavigationBar(StaticNavigationBar(title: "Test")).navigationBar
+        navigationBar.textAligment = .center
         view.addSubview(newsTableView)
     }
     
@@ -35,7 +35,8 @@ extension NewsListController {
         super.constraintSubviews()
         newsTableView.snp.makeConstraints { make in
             make.top.equalTo(navigationBar.snp.bottom)
-            make.left.right.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.left.right.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalToSuperview()
         }
     }
 }
@@ -50,11 +51,8 @@ extension NewsListController {
     
 }
 
+// MARK: - UITableViewDataSource
 extension NewsListController: UITableViewDataSource {
-    public func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     public func tableView(_ tableView: UITableView,
                           numberOfRowsInSection section: Int) -> Int {
         return 10
@@ -65,11 +63,11 @@ extension NewsListController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: NewsCell.cellID,
                                                  for: indexPath) as! NewsCell
         
-        
         return cell
     }
 }
 
+// MARK: - UITableViewDelegate
 extension NewsListController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView,
                           heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -83,8 +81,10 @@ extension NewsListController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView,
                           viewForHeaderInSection section: Int) -> UIView? {
-        let header = HeaderCell()
-        
-        return header
+        return HeaderCell()
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.presentNewsInfoScene()
     }
 }

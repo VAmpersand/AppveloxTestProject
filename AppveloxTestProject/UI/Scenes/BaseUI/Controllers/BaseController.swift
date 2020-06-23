@@ -17,27 +17,16 @@ extension BaseController {
     }
     
     @objc func addSubviews() {
-        
     }
     
     @objc func constraintSubviews() {
-        
     }
 }
-    
-extension BaseController {
-    @discardableResult
-    func addStaticNavigationBar(_ title: String) -> (navigationBar: StaticNavigationBar,
-        leftButton: UIButton?,
-        rightButton: UIButton?) {
-            let bar = StaticNavigationBar(title: title)
-            return addStaticNavigationBar(bar)
-    }
-    
+
+extension BaseController {    
     @discardableResult
     func addStaticNavigationBar(_ bar: StaticNavigationBar) -> (
         navigationBar: StaticNavigationBar,
-        leftButton: UIButton?,
         rightButton: UIButton?
         ) {
             view.addSubview(bar)
@@ -47,6 +36,6 @@ extension BaseController {
                 make.top.equalTo(view.safeAreaLayoutGuide)
             }
             
-            return (bar, bar.leftButton, bar.rightButton)
+            return (bar, bar.rightButton)
     }
 }

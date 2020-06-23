@@ -1,3 +1,3 @@
 protocol NewsInfoRouterProtocol {
-
+    func handleClose()
 }
