@@ -1,12 +1,11 @@
 import UIKit
 import SnapKit
-import AlamofireRSSParser
 
 public final class NewsListController: BaseController {
     public var viewModel: NewsListViewModelProtocol!
     private var navigationBar: StaticNavigationBar!
-    
-    private var newsList: RSSFeed! {
+        
+    private var newsList: [News] = [] {
         didSet {
             newsTableView.reloadData()
         }
@@ -33,12 +32,15 @@ public final class NewsListController: BaseController {
         
         return controll
     }()
+    
+    private lazy var categoriesView = CategoriesView()
 }
 
 extension NewsListController {
     override func setupSelf() {
         super.setupSelf()
         viewModel.updateNewsList()
+        addObserver()
     }
     
     override func addSubviews() {
@@ -46,6 +48,7 @@ extension NewsListController {
         navigationBar = addStaticNavigationBar(StaticNavigationBar(title: "NewsList")).navigationBar
         navigationBar.textAligment = .center
         view.addSubview(newsTableView)
+        view.addSubview(categoriesView)
     }
     
     override func constraintSubviews() {
@@ -55,19 +58,38 @@ extension NewsListController {
             make.left.right.equalTo(view.safeAreaLayoutGuide)
             make.bottom.equalToSuperview()
         }
+        
+        categoriesView.snp.makeConstraints { make in
+            make.top.equalTo(navigationBar.snp.bottom).offset(60)
+            make.right.equalTo(view.snp.left)
+            make.width.equalToSuperview().multipliedBy(0.6)
+        }
     }
 }
 
 // MARK: - NewsListControllerProtocol
 extension NewsListController: NewsListControllerProtocol {
-    public func setupNewsList(_ newsList: RSSFeed) {
+    public func setupNewsList(_ newsList: [News]) {
         self.newsList = newsList
+    }
+    
+    public func updateCategoriesList(for newsList: [News]) {
+        var categories: [String] = []
+        newsList.forEach { news in
+            if !categories.contains(news.category) {
+                categories.append(news.category)
+            }
+        }
+        
+        categoriesView.setupCategoties(categories.sorted(by: <))
+        categoriesView.reloadInputViews()
     }
 }
 
 // MARK: - Actions
 extension NewsListController {
     @objc func refreshControllHandle(sender: UIRefreshControl) {
+        categoriesView.moveOut()
         sender.endRefreshing()
         viewModel.updateNewsList()
     }
@@ -77,6 +99,7 @@ extension NewsListController {
 extension NewsListController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView,
                           numberOfRowsInSection section: Int) -> Int {
+        
         return newsList.count
     }
     
@@ -105,10 +128,35 @@ extension NewsListController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView,
                           viewForHeaderInSection section: Int) -> UIView? {
-        return HeaderCell()
+        let cell = HeaderCell()
+        cell.delegate = self
+        
+        return cell
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.presentNewsInfoScene(with: newsList[indexPath.row])
+    }
+}
+
+// MARK: - HeaderCellDelegate
+extension NewsListController: HeaderCellDelegate {
+    public func categoriesButtonPressed() {
+        categoriesView.moveIn()
+    }
+}
+
+extension NewsListController {
+    func addObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(selectCategory(_:)),
+                                               name: .selectCategory,
+                                               object: nil)
+    }
+    
+    @objc func selectCategory(_ notification: Notification) {
+        guard let category = notification.object as? String else { return }
+            print(category)
+        
     }
 }

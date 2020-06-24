@@ -1,5 +1,4 @@
 final class NewsInfoRouter: BaseRouter {
-
 }
 
 // MARK: - NewsInfoRouterProtocol

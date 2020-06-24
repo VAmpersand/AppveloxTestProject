@@ -1,5 +1,3 @@
-import AlamofireRSSParser
-
 final class NewsListRouter: BaseRouter {
     
     // weaver: newsInfoScene = NewsInfoScene
@@ -14,10 +12,9 @@ final class NewsListRouter: BaseRouter {
 
 // MARK: - NewsListRouterProtocol
 extension NewsListRouter: NewsListRouterProtocol {
-    func presentNewsInfoScene(with news: RSSFeed) {
+    func presentNewsInfoScene(with news: News) {
         let newsInfoScene = dependencies.newsInfoScene(parentRouter: self,
                                                        news: news)
         present(newsInfoScene, using: PopoverPresentation())
     }
-
 }

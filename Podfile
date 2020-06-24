@@ -8,6 +8,5 @@ target 'AppveloxTestProject' do
    pod 'Alamofire', '~> 5.2'
    pod 'SWXMLHash', '~> 5.0.0'
    pod 'Kingfisher'
-   pod 'AlamofireRSSParser'
 
 end

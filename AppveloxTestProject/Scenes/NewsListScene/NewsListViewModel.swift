@@ -1,5 +1,3 @@
-import AlamofireRSSParser
-
 final class NewsListViewModel {
     
     // weaver: networkService = NetworkService
@@ -20,10 +18,11 @@ extension NewsListViewModel: NewsListViewModelProtocol {
     func updateNewsList() {
         dependencies.networkService.loadRSS(complition: { newsList in
             self.controller?.setupNewsList(newsList)
+            self.controller?.updateCategoriesList(for: newsList)
         })
     }
     
-    func presentNewsInfoScene(with news: RSSFeed) {
+    func presentNewsInfoScene(with news: News) {
         router.presentNewsInfoScene(with: news)
     }
 }

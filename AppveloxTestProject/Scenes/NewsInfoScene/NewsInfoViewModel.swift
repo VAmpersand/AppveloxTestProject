@@ -1,8 +1,6 @@
-import AlamofireRSSParser
-
 final class NewsInfoViewModel {
     
-    // weaver: news <= RSSFeed
+    // weaver: news <= News
 
     var router: NewsInfoRouterProtocol!
     var parentRouter: Router!

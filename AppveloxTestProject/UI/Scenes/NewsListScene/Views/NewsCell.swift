@@ -1,5 +1,4 @@
 import UIKit
-import AlamofireRSSParser
 
 extension NewsListController {
     public class NewsCell: UITableViewCell {
@@ -21,8 +20,6 @@ extension NewsListController {
             label.font = UIFont.italicSystemFont(ofSize: 19)
             label.numberOfLines = 0
             
-            label.text = "init(coder:) has not been implemented"
-            
             return label
         }()
         
@@ -30,9 +27,7 @@ extension NewsListController {
             let label = UILabel()
             label.textAlignment = .left
             label.font = UIFont.systemFont(ofSize: 12)
-            
-            label.text = "\(Date())"
-            
+
             return label
         }()
         
@@ -72,14 +67,13 @@ extension NewsListController.NewsCell {
 }
 
 extension NewsListController.NewsCell {
-    func setupCell(with news: RSSFeed) {
+    func setupCell(with news: News) {
         title.text = news.title
         
         let formatter = DateFormatter()
         formatter.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
         let date = formatter.date(from: news.pubDate)
         formatter.dateFormat = "E, d MMM yyyy HH:mm:ss"
-        
         dateLabel.text = formatter.string(from: date ?? Date())
     }
 }
