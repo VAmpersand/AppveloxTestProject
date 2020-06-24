@@ -71,5 +71,14 @@ extension NewsListController.NewsCell {
 }
 
 extension NewsListController.NewsCell {
-
+    func setupCell(with news: Item) {
+        title.text = news.title
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
+        let date = formatter.date(from: news.pubDate)
+        formatter.dateFormat = "E, d MMM yyyy HH:mm:ss"
+        
+        dateLabel.text = formatter.string(from: date ?? Date())
+    }
 }

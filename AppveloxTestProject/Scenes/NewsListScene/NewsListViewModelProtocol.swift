@@ -1,4 +1,4 @@
 public protocol NewsListViewModelProtocol: class {
-    func presentNewsInfoScene() 
-    
+    func viewDidLoad() 
+    func presentNewsInfoScene(with news: Item)
 }

@@ -12,8 +12,9 @@ final class NewsListRouter: BaseRouter {
 
 // MARK: - NewsListRouterProtocol
 extension NewsListRouter: NewsListRouterProtocol {
-    func presentNewsInfoScene() {
-        let newsInfoScene = dependencies.newsInfoScene(parentRouter: self)
+    func presentNewsInfoScene(with news: Item) {
+        let newsInfoScene = dependencies.newsInfoScene(parentRouter: self,
+                                                       news: news)
         present(newsInfoScene, using: PopoverPresentation())
     }
 

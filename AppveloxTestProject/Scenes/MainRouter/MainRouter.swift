@@ -4,7 +4,7 @@ final class MainRouter: BaseRouter {
 
     // weaver: newsListScene = NewsListScene
     // weaver: newsListScene.scope = .transient
-        
+    
     private let dependencies: MainRouterDependencyResolver
     
     private var window: UIWindow!

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B2AE357FF9ED00C62EE9FDE /* Pods_AppveloxTestProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B37E57AFB6A93B81C649510 /* Pods_AppveloxTestProject.framework */; };
+		0F796E553B73DB6F1C71FC0E /* Pods_AppveloxTestProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4D4A03A42BF080813BFE62 /* Pods_AppveloxTestProject.framework */; };
 		77C837F624A11C11002FD700 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C837F524A11C11002FD700 /* AppDelegate.swift */; };
 		77C837F824A11C11002FD700 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C837F724A11C11002FD700 /* SceneDelegate.swift */; };
 		77C837FF24A11C15002FD700 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77C837FE24A11C15002FD700 /* Assets.xcassets */; };
@@ -40,11 +40,12 @@
 		77C8385D24A244F8002FD700 /* PopoverPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C8385C24A244F8002FD700 /* PopoverPresentation.swift */; };
 		77D5424924A24CD800423397 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77D5424824A24CD800423397 /* Icons.xcassets */; };
 		77D5424B24A24D1000423397 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D5424A24A24D1000423397 /* Icons.swift */; };
+		77D5424E24A28B5E00423397 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D5424D24A28B5E00423397 /* NetworkService.swift */; };
+		77D5425124A2964900423397 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D5425024A2964900423397 /* News.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		19A17FDFA895192987BE348C /* Pods-AppveloxTestProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppveloxTestProject.debug.xcconfig"; path = "Target Support Files/Pods-AppveloxTestProject/Pods-AppveloxTestProject.debug.xcconfig"; sourceTree = "<group>"; };
-		5B37E57AFB6A93B81C649510 /* Pods_AppveloxTestProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppveloxTestProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FE623725CA543D81302686A /* Pods-AppveloxTestProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppveloxTestProject.release.xcconfig"; path = "Target Support Files/Pods-AppveloxTestProject/Pods-AppveloxTestProject.release.xcconfig"; sourceTree = "<group>"; };
 		77C837F224A11C11002FD700 /* AppveloxTestProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppveloxTestProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77C837F524A11C11002FD700 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77C837F724A11C11002FD700 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,7 +80,10 @@
 		77C8385C24A244F8002FD700 /* PopoverPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverPresentation.swift; sourceTree = "<group>"; };
 		77D5424824A24CD800423397 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		77D5424A24A24D1000423397 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
-		D31CA3805672A823668DCA1A /* Pods-AppveloxTestProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppveloxTestProject.release.xcconfig"; path = "Target Support Files/Pods-AppveloxTestProject/Pods-AppveloxTestProject.release.xcconfig"; sourceTree = "<group>"; };
+		77D5424D24A28B5E00423397 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		77D5425024A2964900423397 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		AF4D4A03A42BF080813BFE62 /* Pods_AppveloxTestProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppveloxTestProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9074A44A5A1419D78D542D1 /* Pods-AppveloxTestProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppveloxTestProject.debug.xcconfig"; path = "Target Support Files/Pods-AppveloxTestProject/Pods-AppveloxTestProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,17 +91,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B2AE357FF9ED00C62EE9FDE /* Pods_AppveloxTestProject.framework in Frameworks */,
+				0F796E553B73DB6F1C71FC0E /* Pods_AppveloxTestProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2DF127FE9A07A7E579B81C49 /* Frameworks */ = {
+		3793DF83B1E81CBB332791FB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5B37E57AFB6A93B81C649510 /* Pods_AppveloxTestProject.framework */,
+				AF4D4A03A42BF080813BFE62 /* Pods_AppveloxTestProject.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -108,7 +112,7 @@
 				77C837F424A11C11002FD700 /* AppveloxTestProject */,
 				77C837F324A11C11002FD700 /* Products */,
 				909E9EA4F837DF9E40BDB64F /* Pods */,
-				2DF127FE9A07A7E579B81C49 /* Frameworks */,
+				3793DF83B1E81CBB332791FB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +132,7 @@
 				77C8383324A1239F002FD700 /* Services */,
 				77C8383424A123C0002FD700 /* SupportingFiles */,
 				77C8382C24A120B1002FD700 /* UI */,
+				77D5424F24A2962A00423397 /* Base */,
 				77C8383624A12418002FD700 /* Extension */,
 			);
 			path = AppveloxTestProject;
@@ -239,6 +244,7 @@
 		77C8383224A12383002FD700 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				77D5424C24A28B4600423397 /* NetworkService */,
 				77C837F524A11C11002FD700 /* AppDelegate.swift */,
 				77C837F724A11C11002FD700 /* SceneDelegate.swift */,
 			);
@@ -344,11 +350,35 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		77D5424C24A28B4600423397 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				77D5424D24A28B5E00423397 /* NetworkService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		77D5424F24A2962A00423397 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				77D5425224A2965200423397 /* Model */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		77D5425224A2965200423397 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				77D5425024A2964900423397 /* News.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		909E9EA4F837DF9E40BDB64F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				19A17FDFA895192987BE348C /* Pods-AppveloxTestProject.debug.xcconfig */,
-				D31CA3805672A823668DCA1A /* Pods-AppveloxTestProject.release.xcconfig */,
+				C9074A44A5A1419D78D542D1 /* Pods-AppveloxTestProject.debug.xcconfig */,
+				1FE623725CA543D81302686A /* Pods-AppveloxTestProject.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -360,12 +390,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 77C8380624A11C15002FD700 /* Build configuration list for PBXNativeTarget "AppveloxTestProject" */;
 			buildPhases = (
+				370D741442FA8DFE90D2618E /* [CP] Check Pods Manifest.lock */,
 				77C8383924A12499002FD700 /* Weaver */,
-				EA2A1AB69989D3596111D940 /* [CP] Check Pods Manifest.lock */,
 				77C837EE24A11C11002FD700 /* Sources */,
 				77C837EF24A11C11002FD700 /* Frameworks */,
 				77C837F024A11C11002FD700 /* Resources */,
-				98402D7F3CD3B6DA8734C8EB /* [CP] Embed Pods Frameworks */,
+				7941390B4D9D60621E574BD0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -423,42 +453,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		77C8383924A12499002FD700 /* Weaver */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = Weaver;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "$PODS_ROOT/WeaverDI/weaver/bin/weaver swift --project-path \"$PROJECT_DIR/$TARGET_NAME\" --output-path \"${SOURCE_ROOT}/$TARGET_NAME/Source/Dependencies/Generated\" --single-output\n";
-		};
-		98402D7F3CD3B6DA8734C8EB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AppveloxTestProject/Pods-AppveloxTestProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AppveloxTestProject/Pods-AppveloxTestProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AppveloxTestProject/Pods-AppveloxTestProject-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EA2A1AB69989D3596111D940 /* [CP] Check Pods Manifest.lock */ = {
+		370D741442FA8DFE90D2618E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -480,6 +475,41 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		77C8383924A12499002FD700 /* Weaver */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Weaver;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$PODS_ROOT/WeaverDI/weaver/bin/weaver swift --project-path \"$PROJECT_DIR/$TARGET_NAME\" --output-path \"${SOURCE_ROOT}/$TARGET_NAME/Source/Dependencies/Generated\" --single-output\n";
+		};
+		7941390B4D9D60621E574BD0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AppveloxTestProject/Pods-AppveloxTestProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AppveloxTestProject/Pods-AppveloxTestProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AppveloxTestProject/Pods-AppveloxTestProject-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -497,6 +527,8 @@
 				77C8381924A11F5B002FD700 /* NewsListRouter.swift in Sources */,
 				77C8384424A12ACC002FD700 /* NewsInfoRouter.swift in Sources */,
 				77C8384E24A13575002FD700 /* StaticNavigationBar.swift in Sources */,
+				77D5425124A2964900423397 /* News.swift in Sources */,
+				77D5424E24A28B5E00423397 /* NetworkService.swift in Sources */,
 				77C8385524A13889002FD700 /* NewsCell.swift in Sources */,
 				77C8384624A12AEE002FD700 /* NewsInfoRouterProtocol.swift in Sources */,
 				77C8383B24A12571002FD700 /* Weaver.swift in Sources */,
@@ -649,7 +681,7 @@
 		};
 		77C8380724A11C15002FD700 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 19A17FDFA895192987BE348C /* Pods-AppveloxTestProject.debug.xcconfig */;
+			baseConfigurationReference = C9074A44A5A1419D78D542D1 /* Pods-AppveloxTestProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -667,7 +699,7 @@
 		};
 		77C8380824A11C15002FD700 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D31CA3805672A823668DCA1A /* Pods-AppveloxTestProject.release.xcconfig */;
+			baseConfigurationReference = 1FE623725CA543D81302686A /* Pods-AppveloxTestProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

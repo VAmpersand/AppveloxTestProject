@@ -10,10 +10,12 @@ final class NewsInfoScene: BaseScene {
 
     // weaver: newsInfoController = NewsInfoController
     // weaver: newsInfoController.scope = .transient
+    
+    // weaver: news <= Item
 
     init(injecting dependencies: NewsInfoSceneDependencyResolver) {
         let router = dependencies.newsInfoRouter
-        let viewModel = dependencies.newsInfoViewModel
+        let viewModel = dependencies.newsInfoViewModel(news: dependencies.news)
         let controller = dependencies.newsInfoController
 
         controller.viewModel = viewModel

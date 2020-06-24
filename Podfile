@@ -5,5 +5,8 @@ target 'AppveloxTestProject' do
 
    pod 'WeaverDI', '~> 0.12.3'
    pod 'SnapKit'
+   pod 'Alamofire', '~> 5.2'
+   pod 'SWXMLHash', '~> 5.0.0'
+   pod 'Kingfisher'
 
 end

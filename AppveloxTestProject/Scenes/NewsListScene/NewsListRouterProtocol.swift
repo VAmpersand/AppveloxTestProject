@@ -1,3 +1,3 @@
 protocol NewsListRouterProtocol {
-    func presentNewsInfoScene()
+    func presentNewsInfoScene(with news: Item)
 }
