@@ -244,7 +244,6 @@
 		77C8383224A12383002FD700 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				77D5424C24A28B4600423397 /* NetworkService */,
 				77C837F524A11C11002FD700 /* AppDelegate.swift */,
 				77C837F724A11C11002FD700 /* SceneDelegate.swift */,
 			);
@@ -254,6 +253,7 @@
 		77C8383324A1239F002FD700 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				77D5424C24A28B4600423397 /* NetworkService */,
 				77C8383224A12383002FD700 /* Application */,
 			);
 			path = Services;

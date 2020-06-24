@@ -1,4 +1,5 @@
 import UIKit
+import AlamofireRSSParser
 
 extension NewsListController {
     public class NewsCell: UITableViewCell {
@@ -71,7 +72,7 @@ extension NewsListController.NewsCell {
 }
 
 extension NewsListController.NewsCell {
-    func setupCell(with news: Item) {
+    func setupCell(with news: RSSFeed) {
         title.text = news.title
         
         let formatter = DateFormatter()

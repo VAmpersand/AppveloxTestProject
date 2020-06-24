@@ -1,3 +1,6 @@
-public protocol NewsInfoControllerProtocol: class {
+import AlamofireRSSParser
 
+public protocol NewsInfoControllerProtocol: class {
+    func setupNews(_ news: RSSFeed)
 }
+

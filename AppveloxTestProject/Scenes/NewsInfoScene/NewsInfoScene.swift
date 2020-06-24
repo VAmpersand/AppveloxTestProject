@@ -1,3 +1,5 @@
+import AlamofireRSSParser
+
 final class NewsInfoScene: BaseScene {
 
     // weaver: parentRouter <= Router
@@ -11,7 +13,7 @@ final class NewsInfoScene: BaseScene {
     // weaver: newsInfoController = NewsInfoController
     // weaver: newsInfoController.scope = .transient
     
-    // weaver: news <= Item
+    // weaver: news <= RSSFeed
 
     init(injecting dependencies: NewsInfoSceneDependencyResolver) {
         let router = dependencies.newsInfoRouter

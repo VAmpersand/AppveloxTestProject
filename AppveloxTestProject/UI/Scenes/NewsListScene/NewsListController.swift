@@ -1,11 +1,16 @@
 import UIKit
 import SnapKit
+import AlamofireRSSParser
 
 public final class NewsListController: BaseController {
     public var viewModel: NewsListViewModelProtocol!
     private var navigationBar: StaticNavigationBar!
     
-    private var newsList: [Item] = []
+    private var newsList: RSSFeed! {
+        didSet {
+            newsTableView.reloadData()
+        }
+    }
     
     public lazy var newsTableView: UITableView = {
         let table = UITableView()
@@ -28,23 +33,17 @@ public final class NewsListController: BaseController {
         
         return controll
     }()
-    
-    let service = NetworkService()
 }
 
 extension NewsListController {
     override func setupSelf() {
         super.setupSelf()
-                
-        service.loadRSS(complition: { items in
-            self.newsList = items
-            self.newsTableView.reloadData()
-        })
+        viewModel.updateNewsList()
     }
     
     override func addSubviews() {
         super.addSubviews()
-        navigationBar = addStaticNavigationBar(StaticNavigationBar(title: "Test")).navigationBar
+        navigationBar = addStaticNavigationBar(StaticNavigationBar(title: "NewsList")).navigationBar
         navigationBar.textAligment = .center
         view.addSubview(newsTableView)
     }
@@ -61,7 +60,7 @@ extension NewsListController {
 
 // MARK: - NewsListControllerProtocol
 extension NewsListController: NewsListControllerProtocol {
-    public func setupNewsList(_ newsList: [Item]) {
+    public func setupNewsList(_ newsList: RSSFeed) {
         self.newsList = newsList
     }
 }
@@ -70,10 +69,7 @@ extension NewsListController: NewsListControllerProtocol {
 extension NewsListController {
     @objc func refreshControllHandle(sender: UIRefreshControl) {
         sender.endRefreshing()
-        service.loadRSS(complition: { items in
-            self.newsList = items
-            self.newsTableView.reloadData()
-        })
+        viewModel.updateNewsList()
     }
 }
 

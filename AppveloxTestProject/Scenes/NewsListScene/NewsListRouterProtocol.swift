@@ -1,3 +1,5 @@
+import AlamofireRSSParser
+
 protocol NewsListRouterProtocol {
-    func presentNewsInfoScene(with news: Item)
+    func presentNewsInfoScene(with news: RSSFeed)
 }

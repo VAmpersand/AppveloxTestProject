@@ -1,6 +1,8 @@
+import AlamofireRSSParser
+
 final class NewsInfoViewModel {
     
-    // weaver: news <= Item
+    // weaver: news <= RSSFeed
 
     var router: NewsInfoRouterProtocol!
     var parentRouter: Router!
@@ -14,6 +16,10 @@ final class NewsInfoViewModel {
 
 // MARK: - NewsInfoViewModelProtocol
  extension NewsInfoViewModel: NewsInfoViewModelProtocol {
+    func setupNews() {
+        controller?.setupNews(dependencies.news)
+    }
+    
     func handleClose() {
         router.handleClose()
     }

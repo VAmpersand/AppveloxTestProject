@@ -1,3 +1,4 @@
 public protocol NewsInfoViewModelProtocol: class {
-     func handleClose()
+    func setupNews()
+    func handleClose()
 }

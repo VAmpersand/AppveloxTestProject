@@ -1,4 +1,6 @@
+import AlamofireRSSParser
+
 public protocol NewsListViewModelProtocol: class {
-    func viewDidLoad() 
-    func presentNewsInfoScene(with news: Item)
+    func updateNewsList() 
+    func presentNewsInfoScene(with news: RSSFeed)
 }
