@@ -1,3 +1,5 @@
+import UIKit
+
 final class NewsListViewModel {
     
     // weaver: networkService = NetworkService
@@ -16,7 +18,7 @@ final class NewsListViewModel {
 // MARK: - NewsListViewModelProtocol
 extension NewsListViewModel: NewsListViewModelProtocol {
     func updateNewsList() {
-        dependencies.networkService.loadRSS(complition: { newsList in
+        self.dependencies.networkService.loadRSS(complition: { newsList in
             self.controller?.setupNewsList(newsList)
             self.controller?.updateCategoriesList(for: newsList)
         })

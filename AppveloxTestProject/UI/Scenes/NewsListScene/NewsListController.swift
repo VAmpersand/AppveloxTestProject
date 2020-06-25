@@ -2,15 +2,25 @@ import UIKit
 import SnapKit
 
 public final class NewsListController: BaseController {
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        viewModel.updateNewsList()
+        setupSelf()
+    }
+    
     public var viewModel: NewsListViewModelProtocol!
     private var navigationBar: StaticNavigationBar!
         
     private var newsList: [News] = [] {
         didSet {
+            filterNewsList()
             newsTableView.reloadData()
         }
     }
     
+    private var sortedNewsList: [News] = [] 
+ 
     public lazy var newsTableView: UITableView = {
         let table = UITableView()
         table.register(NewsCell.self,
@@ -20,6 +30,7 @@ public final class NewsListController: BaseController {
         table.delegate = self
         table.dataSource = self
         table.refreshControl = self.refreshControll
+        table.showsVerticalScrollIndicator = false
         
         return table
     }()
@@ -39,13 +50,12 @@ public final class NewsListController: BaseController {
 extension NewsListController {
     override func setupSelf() {
         super.setupSelf()
-        viewModel.updateNewsList()
         addObserver()
     }
     
     override func addSubviews() {
         super.addSubviews()
-        navigationBar = addStaticNavigationBar(StaticNavigationBar(title: "NewsList")).navigationBar
+        navigationBar = addStaticNavigationBar(StaticNavigationBar(title: Texts.NewsList.title)).navigationBar
         navigationBar.textAligment = .center
         view.addSubview(newsTableView)
         view.addSubview(categoriesView)
@@ -62,7 +72,8 @@ extension NewsListController {
         categoriesView.snp.makeConstraints { make in
             make.top.equalTo(navigationBar.snp.bottom).offset(60)
             make.right.equalTo(view.snp.left)
-            make.width.equalToSuperview().multipliedBy(0.6)
+            make.width.equalToSuperview().multipliedBy(0.7)
+            make.bottom.equalToSuperview().inset(70)
         }
     }
 }
@@ -82,7 +93,7 @@ extension NewsListController: NewsListControllerProtocol {
         }
         
         categoriesView.setupCategoties(categories.sorted(by: <))
-        categoriesView.reloadInputViews()
+        categoriesView.categoriyViews.reloadData()
     }
 }
 
@@ -100,7 +111,7 @@ extension NewsListController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView,
                           numberOfRowsInSection section: Int) -> Int {
         
-        return newsList.count
+        return sortedNewsList.count
     }
     
     public func tableView(_ tableView: UITableView,
@@ -108,7 +119,7 @@ extension NewsListController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: NewsCell.cellID,
                                                  for: indexPath) as! NewsCell
         
-        cell.setupCell(with: newsList[indexPath.row])
+        cell.setupCell(with: sortedNewsList[indexPath.row])
         
         return cell
     }
@@ -135,7 +146,8 @@ extension NewsListController: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.presentNewsInfoScene(with: newsList[indexPath.row])
+        categoriesView.moveOut()
+        viewModel.presentNewsInfoScene(with: sortedNewsList[indexPath.row])
     }
 }
 
@@ -156,7 +168,19 @@ extension NewsListController {
     
     @objc func selectCategory(_ notification: Notification) {
         guard let category = notification.object as? String else { return }
-            print(category)
-        
+        UserDefaults.selectCategory = category
+        filterNewsList()
+        categoriesView.moveOut()
+        newsTableView.reloadData()
+    }
+}
+
+extension NewsListController {
+     func filterNewsList() {
+        if UserDefaults.selectCategory == Texts.NewsList.defaultCategory {
+            sortedNewsList = newsList
+        } else {
+            sortedNewsList = newsList.filter() { $0.category == UserDefaults.selectCategory }
+        }
     }
 }

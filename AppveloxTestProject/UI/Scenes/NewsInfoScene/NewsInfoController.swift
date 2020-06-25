@@ -58,7 +58,7 @@ extension NewsInfoController {
         viewModel.setupNews()
         
         let navigationBarTuple = addStaticNavigationBar(
-            StaticNavigationBar(title: "NewsInfo",
+            StaticNavigationBar(title: Texts.NewsInfo.title,
                                 rightButtonImage: Icons.NewsInfo.back,
                                 rightAction: {
                                     self.viewModel.handleClose()

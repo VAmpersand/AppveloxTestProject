@@ -7,36 +7,31 @@ extension NewsListController {
             
             setupSelf()
         }
+
         required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
         
         private var categories: [String] = [] {
             didSet {
-                categories.insert("Все категории", at: 0)
+                categories.insert(Texts.NewsList.defaultCategory, at: 0)
             }
         }
         
-        private lazy var categoriyViews: [CategoryView] = {
-            var views: [CategoryView] = []
-            categories.forEach {
-                let view = CategoryView(category: $0)
-                views.append(view)
-            }
+        public lazy var categoriyViews: UITableView = {
+            let table = UITableView()
+            table.register(CategoryCell.self,
+                           forCellReuseIdentifier: CategoryCell.cellID)
+            table.delegate = self
+            table.dataSource = self
+            table.showsVerticalScrollIndicator = false
+            table.backgroundColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
+            table.separatorStyle = .none
             
-            return views
+            return table
         }()
         
-        private lazy var stackView: UIStackView = {
-            let stackView = UIStackView()
-            stackView.distribution = .fill
-            stackView.spacing = 20
-            stackView.axis = .vertical
-            categoriyViews.forEach(stackView.addArrangedSubview)
-            
-                        
-            return stackView
-        }()
+        
         
         private lazy var leftSwipe: UISwipeGestureRecognizer = {
             let swipe = UISwipeGestureRecognizer(target: self, action: #selector(moveOut))
@@ -59,11 +54,11 @@ extension NewsListController.CategoriesView {
     }
     
     func addSubviews() {
-        addSubview(stackView)
+        addSubview(categoriyViews)
     }
     
     func constraintSubviews() {
-        stackView.snp.makeConstraints { make in
+        categoriyViews.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(20)
             make.bottom.equalToSuperview().inset(60)
             make.left.right.equalToSuperview().inset(10)
@@ -77,8 +72,34 @@ extension NewsListController.CategoriesView {
     }
 }
 
-extension NewsListController.CategoriesView {
-  
+//MARK:- UITableViewDelegate
+extension NewsListController.CategoriesView: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView,
+                          didSelectRowAt indexPath: IndexPath) {
+        NotificationCenter.default.post(name: .selectCategory,
+                                        object: categories[indexPath.row])
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40
+    }
+}
+
+//MARK:- UITableViewDataSource
+extension NewsListController.CategoriesView: UITableViewDataSource {
+    public func tableView(_ tableView: UITableView,
+                          numberOfRowsInSection section: Int) -> Int {
+        return categories.count
+    }
+    
+    public func tableView(_ tableView: UITableView,
+                          cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewsListController.CategoryCell.cellID,
+                                                 for: indexPath) as! NewsListController.CategoryCell
+        cell.label.text = categories[indexPath.row]
+        
+        return cell
+    }
 }
 
 extension NewsListController.CategoriesView {

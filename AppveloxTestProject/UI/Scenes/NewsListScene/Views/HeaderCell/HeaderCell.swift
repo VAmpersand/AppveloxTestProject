@@ -24,7 +24,7 @@ extension NewsListController {
         
         private lazy var catgoriesButton: UIButton = {
             let button = UIButton()
-            button.setTitle("Категории", for: .normal)
+            button.setTitle(UserDefaults.selectCategory, for: .normal)
             button.setTitleColor(.white, for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
             button.addTarget(self,
