@@ -31,8 +31,6 @@ extension NewsListController {
             return table
         }()
         
-        
-        
         private lazy var leftSwipe: UISwipeGestureRecognizer = {
             let swipe = UISwipeGestureRecognizer(target: self, action: #selector(moveOut))
             swipe.direction = .left
